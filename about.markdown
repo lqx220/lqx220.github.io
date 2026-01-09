@@ -1,18 +1,46 @@
 ---
 layout: page
-title: About
+title: 关于我
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# 你好！👋
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+这里是 **我少女时期的英雄主义**，很高兴遇见你！
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+## 关于我
 
+- 🎂 2008年7月25日出生的夏天女孩
+- 📚 高中阶段选择自学，探索适合自己的学习方式
+- 🤖 相信 AI 能够赋能学习，正在实践中体验科技的力量
 
-[jekyll-organization]: https://github.com/jekyll
+## 我的生活
+
+### 擅长的事情
+- 🎨 **手工创作** - 用双手创造美好
+- 📖 **阅读** - 在书籍中探索世界
+- ✍️ **练习** - 持续精进，不断成长
+
+### 热爱的运动与音乐
+- ⛸️ **花样滑冰** - 冰上的优雅与力量
+- 🎵 **听音乐** - 旋律中的情感与故事
+
+## 这个博客
+
+在这里，我会分享：
+- 学习笔记和思考
+- 技术探索的过程
+- 生活中的点滴感悟
+- 用 AI 辅助学习的经验
+
+希望我的记录能给你带来一些启发或共鸣。
+
+## 联系方式
+
+- 📧 Email: [lqx_220@qq.com](mailto:lqx_220@qq.com)
+- 💻 GitHub: [lqx220](https://github.com/lqx220)
+
+---
+
+*"每一个不曾起舞的日子，都是对生命的辜负。"*
+
