@@ -3,36 +3,36 @@ layout: default
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
 
-  {{ content }}
+  <!-- Hero -->
+  <div class="home-hero">
+    <div class="hero-eyebrow">独立思考者的数字花园</div>
+    <h1>探索<em>边界</em>，<br>记录真实的思考</h1>
+    <p class="sub">技术探索 · 学习方法 · 生活感悟 · AI 应用实践</p>
+  </div>
 
+  <!-- 黄金比例分割线 -->
+  <div class="phi-divider">
+    <span class="phi-label">φ = 1.618</span>
+    <div class="phi-seg phi-seg-a"></div>
+    <div class="phi-seg phi-seg-b"></div>
+  </div>
+
+  <!-- 文章卡片网格 -->
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if post.categories -%}
-          <div class="post-categories">
-            分类：
-            {%- for category in post.categories -%}
-              <span class="category-tag">{{ category }}</span>
-              {%- unless forloop.last -%}, {% endunless -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+  <div class="post-grid">
+    {%- for post in site.posts -%}
+    <a class="post-card {% if forloop.first %}featured{% endif %}" href="{{ post.url | relative_url }}">
+      <div class="post-num">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</div>
+      {%- if post.categories.size > 0 -%}
+        <div class="post-tag-pill">{{ post.categories | join: ' · ' }}</div>
+      {%- endif -%}
+      <h3>{{ post.title | escape }}</h3>
+      <div class="post-date-label">{{ post.date | date: "%b %-d, %Y" }}</div>
+      <span class="post-arrow">↗</span>
+    </a>
+    {%- endfor -%}
+  </div>
   {%- endif -%}
 
 </div>
