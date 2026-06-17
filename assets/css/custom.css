@@ -1,521 +1,509 @@
 /* ========================================
-   温暖配色与精美动画设计
+   蓝白科技风 · 黄金比例 · 粒子系统
    ======================================== */
 
-/* 配色方案 - 温暖柔美系 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
 :root {
-  --primary-color: #D4916D;        /* 温暖焦糖色 */
-  --secondary-color: #E8B4A8;      /* 柔和蜜桃粉 */
-  --accent-color: #F5D6C6;         /* 浅杏色 */
-  --bg-color: #FCFAF8;             /* 柔和米白 */
-  --bg-gradient: #F7F1EB;          /* 米白渐变 */
-  --card-bg: #FFFEF9;              /* 奶油白（替代死白） */
-  --text-primary: #5D4E46;         /* 温暖深棕（替代黑色） */
-  --text-secondary: #8B7466;       /* 柔和棕色 */
-  --border-color: #F0EBE5;         /* 浅米色边框 */
-  --shadow-subtle: 0 4px 20px rgba(212, 145, 109, 0.08);
-  --shadow-hover: 0 8px 30px rgba(212, 145, 109, 0.15);
+  --blue-deep:    #0f1e3a;
+  --blue-mid:     #1e3a70;
+  --blue-main:    #2a52a0;
+  --blue-light:   #4a7acc;
+  --blue-pale:    #dce8f8;
+  --indigo:       #1a2f60;
+  --white:        #ffffff;
+  --bg:           #f4f6fb;
+  --bg-card:      #ffffff;
+  --text-primary: #0f1e3a;
+  --text-sec:     #4a6080;
+  --text-hint:    #8fa4c0;
+  --border:       rgba(30,60,120,0.10);
+  --border-hover: rgba(42,82,160,0.28);
+  --shadow:       0 2px 16px rgba(30,60,120,0.07);
+  --shadow-hover: 0 6px 28px rgba(42,82,160,0.13);
+  --phi-a:        61.8%;
+  --phi-b:        38.2%;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Noto Serif SC", "SimSun", serif;
+  font-weight: 700;
+  color: var(--blue-deep);
+  line-height: 1.35;
+  letter-spacing: 0.04em;
 }
 
 /* ========================================
-   字体设置 - 宋体与圆体
+   导航
    ======================================== */
 
-/* 引入思源宋体（如果需要可使用 CDN）*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
-
-/* 页面样式（字体 + 背景） */
-body {
-  /* 字体设置 */
-  font-family: "Noto Serif SC",
-               "Source Han Serif SC",
-               "思源宋体",
-               "SimSun",
-               "宋体",
-               "STSong",
-               "YouYuan",
-               "圆体",
-               "Hiragino Sans GB",
-               "PingFang SC",
-               "Microsoft YaHei",
-               -apple-system,
-               BlinkMacSystemFont,
-               sans-serif;
-  font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: 0.05em;
-
-  /* 背景设置 */
-  background: linear-gradient(135deg, var(--bg-color) 0%, #F0EBE8 100%);
-  background-attachment: fixed;
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.site-header {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 0.5px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0;
 }
 
-/* 标题字体 - 更粗的宋体 */
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Noto Serif SC",
-               "Source Han Serif SC",
-               "思源宋体",
-               "SimSun",
-               "宋体",
-               "STSong",
-               serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text-primary);
-  line-height: 1.4;
-}
-
-h1 { font-size: 2.2rem; margin-bottom: 1rem; }
-h2 { font-size: 1.8rem; margin: 2rem 0 1rem; }
-h3 { font-size: 1.4rem; margin: 1.5rem 0 0.8rem; }
-
-/* 导航和 UI 元素 - 圆体 */
-.page-link,
-.sidebar a,
-.category-tag,
-.post-meta {
-  font-family: "YouYuan",
-               "圆体",
-               "Hiragino Sans GB",
-               "PingFang SC",
-               "Microsoft YaHei",
-               -apple-system,
-               sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-}
-
-/* 代码字体 */
-code, pre {
-  font-family: "Consolas",
-               "Monaco",
-               "Courier New",
-               monospace;
-  letter-spacing: 0;
-}
-
-/* 页面容器 */
-.container {
-  max-width: 1200px;
+.site-header .wrapper {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-  animation: fadeInUp 0.8s ease-out;
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  animation: none;
 }
 
-/* 网站标题 - 宋体 */
+.site-header .wrapper:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .site-title {
-  font-family: "Noto Serif SC",
-               "Source Han Serif SC",
-               "思源宋体",
-               "SimSun",
-               "宋体",
-               serif;
+  font-family: "Noto Serif SC", serif;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--primary-color) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  color: var(--blue-deep) !important;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
 }
 
-.site-title:hover {
-  color: var(--secondary-color) !important;
-  transform: translateY(-2px);
+.site-title:hover { color: var(--blue-main) !important; }
+
+.site-nav { display: flex; gap: 2rem; }
+
+.site-nav .nav-trigger,
+.site-nav label { display: none; }
+
+.site-nav .trigger {
+  display: flex;
+  gap: 2rem;
 }
 
-/* 导航链接 */
 .page-link {
-  color: var(--text-secondary) !important;
-  font-weight: 500;
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-sec) !important;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
   position: relative;
-  transition: color 0.3s ease;
 }
 
 .page-link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-  transition: width 0.3s ease;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--blue-main);
+  transition: width 0.25s ease;
 }
 
-.page-link:hover {
-  color: var(--primary-color) !important;
+.page-link:hover { color: var(--blue-deep) !important; }
+.page-link:hover::after { width: 100%; }
+
+/* ========================================
+   页面容器
+   ======================================== */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.page-link:hover::after {
-  width: 100%;
-}
+/* ========================================
+   首页 Hero
+   ======================================== */
 
-/* 主内容区域 */
-.wrapper {
-  background: var(--card-bg);
-  box-shadow: var(--shadow-subtle);
-  padding: 2.5rem;
-  border-radius: 16px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid var(--border-color);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: fadeInUp 0.8s ease-out 0.1s backwards;
-}
-
-.wrapper:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
-}
-
-/* 文章链接 */
-.post-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.home-hero {
+  padding: 4rem 0 2.5rem;
   position: relative;
-  display: inline-block;
 }
 
-.post-link:hover {
-  color: var(--secondary-color);
-  transform: translateX(5px);
+.hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--blue-main);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* 文章列表 */
-.post-list {
-  list-style: none;
-  padding-left: 0;
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 0.5px;
+  background: var(--blue-main);
+  opacity: 0.6;
 }
 
-.post-list li {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.6s ease-out backwards;
+.home-hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  line-height: 1.25;
+  margin: 0 0 1rem;
 }
 
-.post-list li:nth-child(1) { animation-delay: 0.1s; }
-.post-list li:nth-child(2) { animation-delay: 0.2s; }
-.post-list li:nth-child(3) { animation-delay: 0.3s; }
-.post-list li:nth-child(4) { animation-delay: 0.4s; }
-
-.post-list li:hover {
-  background: linear-gradient(90deg, rgba(245, 214, 198, 0.15), transparent);
-  padding-left: 1rem;
-  border-radius: 8px;
+.home-hero h1 em {
+  font-style: normal;
+  color: var(--blue-main);
 }
 
-.post-list li:last-child {
-  border-bottom: none;
+.home-hero .sub {
+  font-size: 0.95rem;
+  color: var(--text-hint);
+  max-width: 460px;
+  line-height: 1.7;
 }
 
-/* 文章元数据 */
-.post-meta {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+/* 黄金比例分割线 */
+.phi-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
-/* 分类标签 */
-.category-tag {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  margin: 0.2rem 0.2rem 0.2rem 0;
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  color: white;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
+.phi-divider .phi-label {
+  font-size: 0.7rem;
+  color: var(--text-hint);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  font-family: "Noto Sans SC", monospace;
+}
+
+.phi-seg {
+  height: 1.5px;
+  border-radius: 1px;
+}
+
+.phi-seg-a {
+  background: var(--blue-main);
+  opacity: 0.3;
+  flex: 0.618;
+}
+
+.phi-seg-b {
+  background: var(--blue-main);
+  opacity: 0.12;
+  flex: 0.382;
+}
+
+/* ========================================
+   文章卡片列表
+   ======================================== */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.post-card {
+  background: var(--bg-card);
+  padding: 1.75rem;
+  position: relative;
+  transition: background 0.2s;
   cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 
-.category-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 145, 109, 0.3);
+.post-card:hover { background: #f0f5ff; }
+
+.post-card.featured {
+  grid-column: 1 / -1;
+  background: var(--blue-mid);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.post-categories {
-  margin-top: 0.5rem;
+.post-card.featured:hover { background: #244080; }
+
+.post-num {
+  font-size: 0.7rem;
+  color: var(--text-hint);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.7rem;
+  font-family: monospace;
 }
 
-/* 主内容布局 */
+.post-card.featured .post-num { color: rgba(255,255,255,0.3); }
+
+.post-tag-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 2px 9px;
+  border: 0.5px solid rgba(42,82,160,0.22);
+  color: var(--blue-main);
+  border-radius: 2px;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+.post-card.featured .post-tag-pill {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.6);
+}
+
+.post-card h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--blue-deep);
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.post-card.featured h3 {
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.post-date-label {
+  font-size: 0.75rem;
+  color: var(--text-hint);
+}
+
+.post-card.featured .post-date-label { color: rgba(255,255,255,0.35); }
+
+.post-arrow {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  font-size: 1rem;
+  color: var(--border-hover);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.post-card:hover .post-arrow { color: var(--blue-main); transform: translate(2px,-2px); }
+.post-card.featured .post-arrow { color: rgba(255,255,255,0.25); }
+.post-card.featured:hover .post-arrow { color: rgba(255,255,255,0.75); transform: translate(2px,-2px); }
+
+/* ========================================
+   侧边栏
+   ======================================== */
+
 .content-wrapper {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
 }
 
-.content-main {
-  flex: 1;
-  min-width: 0;
-}
+.content-main { flex: 1; min-width: 0; }
+.content-sidebar { width: 240px; flex-shrink: 0; }
 
-.content-sidebar {
-  width: 280px;
-  flex-shrink: 0;
-}
-
-/* 侧边栏 */
 .sidebar {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: var(--shadow-subtle);
-  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 0.5px solid var(--border);
   position: sticky;
-  top: 2rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: fadeInRight 0.8s ease-out 0.3s backwards;
-}
-
-.sidebar:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+  top: 5rem;
 }
 
 .sidebar h3 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(90deg, var(--secondary-color), var(--primary-color)) 1;
-  padding-bottom: 0.8rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--text-hint);
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  font-weight: 500;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.75rem;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin-bottom: 0.8rem;
-}
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li { margin-bottom: 0.4rem; }
 
 .sidebar a {
-  color: var(--text-secondary);
+  font-size: 0.88rem;
+  color: var(--text-sec);
   text-decoration: none;
   display: block;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.sidebar a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
-  transform: scaleY(0);
-  transition: transform 0.3s ease;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
 .sidebar a:hover {
-  background: linear-gradient(90deg, rgba(245, 214, 198, 0.2), transparent);
-  color: var(--primary-color);
-  padding-left: 1.5rem;
+  background: var(--blue-pale);
+  color: var(--blue-main);
+  padding-left: 1rem;
 }
 
-.sidebar a:hover::before {
-  transform: scaleY(1);
-}
-
-/* 分类计数 */
 .category-count {
-  color: var(--text-secondary);
-  font-size: 0.85em;
-  margin-left: 0.5rem;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  color: var(--text-hint);
+  font-size: 0.82em;
+  margin-left: 4px;
 }
 
-.sidebar a:hover .category-count {
-  opacity: 1;
+/* ========================================
+   文章页
+   ======================================== */
+
+.post-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.5px solid var(--border);
 }
 
-/* 页脚 - 简洁版 */
-.site-footer {
-  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+.post-title {
+  font-size: 2rem;
+  color: var(--blue-deep);
+  margin: 0 0 0.75rem;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: var(--text-hint);
+}
+
+.post-content {
+  line-height: 1.9;
   color: var(--text-primary);
-  padding: 2rem 0;
+}
+
+.post-content p { margin-bottom: 1.4rem; }
+
+.post-content a {
+  color: var(--blue-main);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(42,82,160,0.3);
+  transition: border-color 0.2s;
+}
+
+.post-content a:hover { border-color: var(--blue-main); }
+
+.post-content blockquote {
+  border-left: 3px solid var(--blue-main);
+  padding: 0.8rem 1.2rem;
+  margin: 1.5rem 0;
+  color: var(--text-sec);
+  background: var(--blue-pale);
+  border-radius: 0 8px 8px 0;
+}
+
+.post-content pre {
+  background: var(--blue-deep);
+  color: #c8d8f0;
+  padding: 1.2rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+
+.post-content code {
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.88em;
+}
+
+.post-content p code {
+  background: var(--blue-pale);
+  color: var(--blue-main);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   主内容卡片包裹
+   ======================================== */
+
+.wrapper {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  transition: box-shadow 0.2s;
+}
+
+.wrapper:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ========================================
+   页脚
+   ======================================== */
+
+.site-footer {
+  background: var(--bg-card);
+  border-top: 0.5px solid var(--border);
+  padding: 1.5rem 0;
   margin-top: 4rem;
-  border-radius: 16px 16px 0 0;
   text-align: center;
 }
 
 .footer-content {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  opacity: 0.9;
-}
-
-.site-footer a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.site-footer a:hover {
-  color: var(--secondary-color);
-}
-
-/* 文章内容样式 */
-.post-content {
-  line-height: 1.8;
-  color: var(--text-primary);
-}
-
-.post-content p {
-  margin-bottom: 1.5rem;
-}
-
-.post-content a {
-  color: var(--primary-color);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.post-content a:hover {
-  border-bottom-color: var(--secondary-color);
-}
-
-.post-content ul,
-.post-content ol {
-  padding-left: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.post-content li {
-  margin-bottom: 0.5rem;
-}
-
-/* 代码块 */
-.post-content pre,
-.post-content code {
-  background: var(--bg-gradient);
-  border-radius: 8px;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-.post-content pre {
-  margin: 1.5rem 0;
-  border: 1px solid var(--border-color);
-}
-
-/* 引用块 */
-.post-content blockquote {
-  border-left: 4px solid var(--primary-color);
-  padding-left: 1.5rem;
-  margin: 1.5rem 0;
-  color: var(--text-secondary);
-  font-style: italic;
-  background: rgba(245, 214, 198, 0.15);
-  padding: 1rem 1.5rem;
-  border-radius: 0 8px 8px 0;
+  font-size: 0.8rem;
+  color: var(--text-hint);
 }
 
 /* ========================================
-   动画效果
+   粒子画布
    ======================================== */
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* 平滑滚动 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 滚动条美化 */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+#particles-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ========================================
-   响应式设计
+   滚动条
+   ======================================== */
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue-pale); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue-light); }
+
+/* ========================================
+   响应式
    ======================================== */
 
 @media (max-width: 768px) {
-  .wrapper {
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
+  .content-wrapper { flex-direction: column; }
+  .content-sidebar { width: 100%; }
+  .sidebar { position: static; }
+  .post-grid { grid-template-columns: 1fr; }
+  .post-card.featured { grid-column: 1; }
+  .home-hero h1 { font-size: 1.8rem; }
+  .site-header .wrapper { padding: 1rem 1.25rem; }
+  .container { padding: 0 1.25rem; }
 
-  .content-wrapper {
-    flex-direction: column;
-  }
-
-  .content-sidebar {
-    width: 100%;
-    order: 2;
-  }
-
-  .content-main {
-    order: 1;
-  }
-
-  .sidebar {
-    position: static;
-    margin-top: 2rem;
-  }
-
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.2rem; }
+  .site-nav .nav-trigger { display: none; }
+  .site-nav label { display: none; }
 }
